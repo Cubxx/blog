@@ -40,11 +40,11 @@ jobs:
       - name: Build with VitePress
         run: |
           npm run build
-          touch /.vitepress/dist/.nojekyll
+          touch .vitepress/dist/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: /.vitepress/dist
+          path: .vitepress/dist
 
   # 部署工作
   deploy:
