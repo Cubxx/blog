@@ -33,7 +33,7 @@ function toNavItem(dirpath: string): DefaultTheme.NavItem {
               )
             : files.flatMap((filepath) => {
                   const { name } = path.parse(filepath);
-                  return name === 'index' ? [] : toSidebarItem(filepath, routepath);
+                  return name === 'index' ? [] : toSidebarItem(name, routepath);
               });
         return {
             text: name,
