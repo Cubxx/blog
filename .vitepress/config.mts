@@ -10,9 +10,9 @@ export default withMermaid(
         base: '/blog/',
         srcDir: srcDir,
         cleanUrls: true,
-        lastUpdated: true,
         markdown: {
             image: { lazyLoading: true },
+            math: true,
         },
         themeConfig: {
             // https://vitepress.dev/reference/default-theme-config
@@ -30,6 +30,7 @@ export default withMermaid(
                 text: '在 GitHub 上编辑此页面',
                 pattern: 'https://github.com/cubxx/blog/edit/main/docs/:path',
             },
+            lastUpdated: { text: '最后更新于' },
         },
         mermaid: {},
     }),
