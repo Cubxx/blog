@@ -34,7 +34,7 @@ function DirToItem(dirpath: string): DefaultTheme.NavItem | [] {
               ? JSON.parse(fs.readFileSync(configFilepath).toString()).map((e: SidebarConfig) =>
                     parseSidebarConfig(e, routepath),
                 )
-              : files.flatMap(FileToItem)),
+              : files.flatMap((e) => FileToItem(e, routepath))),
           {
               text: name,
               link: `${routepath}/${path.basename(
@@ -44,9 +44,9 @@ function DirToItem(dirpath: string): DefaultTheme.NavItem | [] {
           }) //页面文件夹
         : { text: name, items: [] }; //空文件夹
 }
-function FileToItem(filepath: string): DefaultTheme.NavItemWithLink | [] {
+function FileToItem(filepath: string, routepath: string): DefaultTheme.NavItemWithLink | [] {
     const name = path.basename(filepath, '.md');
-    return name === 'index' ? [] : { text: name, link: `./${name}` };
+    return name === 'index' ? [] : { text: name, link: `${routepath}/${name}` };
 }
 
 const configFilename = 'sidebar.json';
