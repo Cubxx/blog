@@ -2,5 +2,4 @@ node_modules
 .vitepress/cache
 .vitepress/dist
 *.log
-sidebar.json
 .vscode
