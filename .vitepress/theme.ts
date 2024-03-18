@@ -38,20 +38,14 @@ function toNavItem(dirpath: string): DefaultTheme.NavItem {
         const filepath = files[+files[0].includes(configFilename)];
         if (!filepath) {
             log('文件夹下没有内容文件', dirpath);
-            return {
-                text: name,
-                link: `.${routepath}/${path.parse(files[0]).base}`,
-            };
+            return { text: name, link: '/404' };
         }
-        return {
-            text: name,
-            link: `${routepath}/${path.parse(filepath).name}`,
-        };
+        return { text: name, link: `${routepath}/${path.parse(filepath).name}` };
     } else {
         //@ts-ignore
         return dirs.length
             ? { text: name, items: dirs.map(toNavItem) } //父文件夹
-            : { text: name, items: [] }; //空文件夹
+            : { text: name, link: '/404' }; //空文件夹
     }
 }
 
