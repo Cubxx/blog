@@ -35,9 +35,17 @@ function toNavItem(dirpath: string): DefaultTheme.NavItem {
                   const { name } = path.parse(filepath);
                   return name === 'index' ? [] : toSidebarItem(name, routepath);
               });
+        const filepath = files[+files[0].includes(configFilename)];
+        if (!filepath) {
+            log('文件夹下没有内容文件', dirpath);
+            return {
+                text: name,
+                link: `.${routepath}/${path.parse(files[0]).base}`,
+            };
+        }
         return {
             text: name,
-            link: `${routepath}/${path.parse(files[+files[0].includes(configFilename)]).name}`,
+            link: `${routepath}/${path.parse(filepath).name}`,
         };
     } else {
         //@ts-ignore
@@ -59,7 +67,7 @@ function toSidebarItem(config: SidebarConfig, routepath: string): DefaultTheme.S
           };
 }
 const log = (function () {
-    const filepath = 'create-theme-config.log';
+    const filepath = `${__dirname}/theme.log`;
     fs.writeFileSync(filepath, new Date().toString() + '\n');
     return function (...args: any[]) {
         fs.appendFileSync(filepath, args.join(' ') + '\n');
@@ -67,9 +75,11 @@ const log = (function () {
 })();
 
 export const srcDir = 'docs';
+export const sidebar: DefaultTheme.SidebarMulti = {};
+export const nav: DefaultTheme.NavItem[] = [];
+
 const { files, dirs } = getFilesAndDirs(srcDir);
 if (files.length !== 1 || path.basename(files[0]) !== 'index.md')
     log('根目录文件只能有一个index.md', files);
-export const sidebar: DefaultTheme.SidebarMulti = {};
-export const nav: DefaultTheme.NavItem[] = dirs.map(toNavItem);
+Object.assign(nav, dirs.map(toNavItem));
 log(JSON.stringify({ nav, sidebar }, null, 4));
