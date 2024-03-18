@@ -1,14 +1,15 @@
 {
-  "devDependencies": {
-    "@types/node": "^20.11.20",
-    "markdown-it-mathjax3": "^4.3.2",
-    "mermaid": "^10.9.0",
-    "vitepress": "^1.0.0-rc.44",
-    "vitepress-plugin-mermaid": "^2.0.16"
-  },
-  "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
-  }
+    "devDependencies": {
+        "@types/node": "^20.11.20",
+        "markdown-it-mathjax3": "^4.3.2",
+        "mermaid": "^10.9.0",
+        "vitepress": "^1.0.0-rc.44",
+        "vitepress-plugin-mermaid": "^2.0.16"
+    },
+    "scripts": {
+        "dev": "vitepress dev",
+        "build": "vitepress build",
+        "preview": "vitepress preview"
+    },
+    "type": "module"
 }
