@@ -12,6 +12,10 @@ type Maximum<T extends any[], U = T[number], N extends any[] = []> = T extends [
     : Equal<U, N['length']> extends true
     ? U
     : Maximum<T, U extends N['length'] ? never : U, [...N, unknown]>;
+/**根据数字生成顺序元组 */
+type Number2Tuple<T extends number, U extends number[] = []> = U['length'] extends T
+    ? U
+    : Number2Tuple<T, [...U, U['length']]>;
 
 /**字符串 */
 //@ts-ignore
