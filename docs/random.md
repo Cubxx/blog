@@ -1,16 +1,21 @@
 ---
 editLink: false
+lastUpdated: false
 ---
 
 <script setup>
 import { useRouter, withBase } from 'vitepress'
 import { data } from './routes.data.ts'
 
-const router = useRouter();
 const routes = data.map(e => e.url).filter(e => !['/', '/random'].includes(e));
 const randomRoute = routes[Math.floor(Math.random() * routes.length)];
-const debugMode = false;
-debugMode || router.go(withBase(randomRoute));
+const content = randomRoute
+    ? useRouter().go(withBase(randomRoute))
+    : {
+        msg: '意料外的错误',
+        data: Array.isArray(data) ? (data.length > 0 || '空数组') : '非数组',
+        routes: Array.isArray(routes) ? (routes.length > 0 || '空数组') : '非数组',
+        randomRoute: typeof randomRoute === 'string' ? randomRoute : '非字符串',
+    };
 </script>
-
-<pre v-if="debugMode">{{ routes }}</pre>
+<pre>{{ content }}</pre>
