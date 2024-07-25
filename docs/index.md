@@ -3,21 +3,32 @@
 layout: home
 
 hero:
-    name: 学习笔记
-    text: 网络资源
-    tagline: 写也是学👍🏿
+    name: Study notes📖
+    text: 🌐Internet resources
+    tagline: Writing is also learning👍🏿
     actions:
         - theme: brand
-          text: 推荐
-          link: /
+          text: Recommend
+          link: https:/bluebones.fun
+          target: _blank
         - theme: alt
-          text: 随机页面
+          text: Random
           link: /random
 features:
-    - title: 编程
-      details: Vue、WPS加载项、油猴脚本
-    - title: 动画
-      details: Adobe AfterEffect ExtendScript
-    - title: 心理
-      details: 神经科学
+    - title: Programing
+      icon: 💻
+      details: |
+          Front-end development <br>
+          Automated workflow <br>
+          Adaptive testing <br>
+    - title: Psychology
+      icon: 🤔
+      details: |
+          Visual perception <br>
+          Audio-visual integration <br>
+    - title: Animation
+      icon: 🎨
+      details: |
+          Motion Graphics <br>
+          AE <br>
 ---
